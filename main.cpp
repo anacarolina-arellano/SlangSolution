@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 using namespace std;
-//First Step: Function that returns the n-grams of the received text
-vector<string> calculateNGrams​(string text​, int ​n​)
+//STEP ONE: Function that returns the n-grams of the received text
+//unordered_map was added during step two
+vector<string> calculateNGrams​(string text​, int ​n​, unordered_map<string, int> &frequencies)
 {
   vector<string> solution;
   //EDGE CASE: SEND AND EMPTY STRING AND N > 0
@@ -20,15 +22,34 @@ vector<string> calculateNGrams​(string text​, int ​n​)
       {
         //construct the anagram by adding the characters
         newAnagram += text[i + j];
-        solution.push_back(newAnagram);
+
       }
       //when the if is true, we have already considered the end of the array
     }
+    //add anagram to our solution
+    solution.push_back(newAnagram);
   }
   return solution;  
 }
 
+string mostFrequentNGram​(​string text​,int n​)
+{
+  //STEP TWO: Have a hash map and store the frequency of the anagrams
+  unordered_map<string, int> anagramFrequencies;
+  vector<string> myAnagrams = calculateNGrams​(text, n, anagramFrequencies);
+
+  int max = 0;
+  string mostFreqAnam = "";
+  for(const anam : map ) 
+  {
+    if(anam.second > max)
+    {
+      mostFreqAnam = anam.first;
+    }
+  }
+  return mostFreqAnam;
+}
 
 int main() {
-  std::cout << "Hello World!\n";
+  
 }
