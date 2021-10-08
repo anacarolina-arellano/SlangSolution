@@ -28,10 +28,22 @@ vector<string> calculateNGrams​(string text​, int ​n​, unordered_map<str
     }
     //add anagram to our solution
     solution.push_back(newAnagram);
+    //check if anagram exists in our map
+    if(frequencies.find(newAnagram) == frequencies.end())
+    {
+      //if it doesn't exist add it
+      frequencies[newAnagram] = 1;
+    }
+    else
+    {
+      //add 1 to the frequency
+      frequencies[newAnagram] ++;
+    }
   }
   return solution;  
 }
 
+//COMPLEXITY OF UNORDERED MAP IS CONSTANT, IS NOT GREATER THAT THE ONE OF THE ALGORITH
 string mostFrequentNGram​(​string text​,int n​)
 {
   //STEP TWO: Have a hash map and store the frequency of the anagrams
